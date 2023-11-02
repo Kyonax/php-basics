@@ -1,0 +1,47 @@
+#+TITLE: Index PHP DOCs
+#+AUTHOR: Kyonax - Cristian Moreno
+#+auto_tangle: t
+
+This Repo is just maded for fun, and to practice some ~PHP~, this is a personal but interesting repo where you can found everything about ~PHP~ | I'm using ~linux (arch distro) - mariadb - apache-server - phpv8.2~.
+
+* Table of Contents :toc:
+- [[#set-up-project][Set-up project]]
+- [[#php-basics][PHP Basics]]
+  - [[#variables][Variables]]
+
+* Set-up project
+#+BEGIN_SRC php :tangle ./functions.php
+<?php
+
+function dd($value) {
+    echo "<pre>";
+    var_dump($value);
+    echo "</pre>";
+
+    die();
+}
+
+function urlIs($value) {
+    return $_SERVER['REQUEST_URI'] === $value;
+}
+#+END_SRC
+* PHP Basics
+This code will be displayed in the ~index page of the url/php-basics~:
+#+BEGIN_SRC html :tangle ./index.php
+<h1>PHP Basics by Kyonax</h1>
+<p>This is a website to review again everything related to <a>PHP</a> and have a fresh knowledge about it.</p>
+#+END_SRC
+
+#+BEGIN_SRC php :tangle ./index.php
+<?php
+require 'functions.php';
+
+dd($SERVER);
+
+$uri = $_SERVER['REQUEST_URI'];
+if ($uri === '/php-basics/') echo 'Everything Is in / path';
+
+print($uri);
+#+END_SRC
+
+** Variables
